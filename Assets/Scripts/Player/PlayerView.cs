@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using BomberMan.Interfaces;
+using BomberMan.Gameplay;
 
 namespace BomberMan.Player
 {
@@ -7,16 +8,21 @@ namespace BomberMan.Player
     {
         private PlayerController controller;
         private float speed;
+        public float Speed{ set{speed = value;}}
         public void Setcontroller(PlayerController _controller)
         {
             controller = _controller;
 
-            speed = 2.0f;
+        }
+
+        public void DestroyView()
+        {
+            Destroy(gameObject);
         }
 
         public void TakeDamage()
         {
-            //player died...game over
+            controller.KillPlayer();
         }
 
         public void ModifyTransform(float xOffset, float yOffset)
@@ -32,6 +38,14 @@ namespace BomberMan.Player
         public Vector2 GetPosition()
         {
             return gameObject.transform.position;
+        }
+
+        private void OnCollisionEnter2D(Collision2D other) 
+        {
+            if(other.gameObject.layer == (int)GameObjectLayers.ENEMY)
+            {
+                controller.KillPlayer();
+            }
         }
     }
 }

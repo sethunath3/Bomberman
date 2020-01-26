@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BomberMan.Generics;
+using BomberMan.Gameplay;
 
 namespace BomberMan.Enemy
 {
@@ -12,7 +13,7 @@ namespace BomberMan.Enemy
         
         private List<EnemyController> enemyList;
 
-        private void Start() {
+        public void InitEnemyService() {
             enemyList = new List<EnemyController>();
         }
 
@@ -26,6 +27,10 @@ namespace BomberMan.Enemy
         {
             enemyList.Remove(_enemy);
             _enemy.KillEnemy();
+            if(enemyList.Count <= 0)
+            {
+                GameplayManager.Instance.GameOver(true);
+            }
         }
     }
 }

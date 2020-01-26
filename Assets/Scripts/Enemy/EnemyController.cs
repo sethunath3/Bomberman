@@ -18,7 +18,7 @@ namespace BomberMan.Enemy
         public void KillEnemy()
         {
             view.DestroyView();
-            view = null;
+            // view = null;
         }
 
         public void ReDirect()

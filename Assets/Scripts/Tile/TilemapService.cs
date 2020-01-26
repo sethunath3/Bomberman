@@ -21,7 +21,7 @@ namespace BomberMan.Grid
         private List<Vector3Int> availableSlots;
         private List<Vector3Int> directions;
 
-        private void Start()
+        public void InitTilemapService()
         {
             directions = new List<Vector3Int>();
             directions.Add(new Vector3Int(-1,0,0));
@@ -80,7 +80,7 @@ namespace BomberMan.Grid
 
         private void RefreshAvailableSlots()
         {
-            Vector3Int playerInitPosition = tilemap.LocalToCell(GameplayManager.Instance.GetPlayerPosition());
+            Vector3Int playerInitPosition = tilemap.WorldToCell(GameplayManager.Instance.GetPlayerPosition());
             availableSlots = new List<Vector3Int>();
             for(int i=tilemap.cellBounds.xMin; i<tilemap.cellBounds.xMax; i++)
             {
