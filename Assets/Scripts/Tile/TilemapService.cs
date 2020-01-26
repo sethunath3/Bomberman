@@ -19,6 +19,16 @@ namespace BomberMan.Grid
         private Tilemap tilemap;
 
         private List<Vector3Int> availableSlots;
+        private List<Vector3Int> directions;
+
+        private void Start()
+        {
+            directions = new List<Vector3Int>();
+            directions.Add(new Vector3Int(-1,0,0));
+            directions.Add(new Vector3Int(1,0,0));
+            directions.Add(new Vector3Int(0,-1,0));
+            directions.Add(new Vector3Int(0,1,0));
+        }
 
         public void PopulateDestructableBlocks(int noOfBlocks)
         {
@@ -83,6 +93,24 @@ namespace BomberMan.Grid
                     }
                 }
             }
+        }
+
+        public Vector2 GetRandomAdjacentTarget(Vector2 _position)
+        {
+            Vector3Int localPosition = tilemap.WorldToCell(_position);
+            List<Vector3Int> availableTargets = new List<Vector3Int>();
+            foreach(Vector3Int dir in directions)
+            {
+                if(tilemap.GetTile(localPosition + dir) == emptyTile)
+                {
+                    availableTargets.Add(localPosition + dir);
+                }
+            }
+            if(availableTargets.Count > 0)
+            {
+                localPosition = availableTargets[Random.Range(0, availableTargets.Count)];
+            }
+            return tilemap.GetCellCenterWorld(localPosition);
         }
     }
 }

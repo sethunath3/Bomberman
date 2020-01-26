@@ -8,7 +8,8 @@ namespace BomberMan.Enemy
     public class EnemyService : GenericMonoSingleton<EnemyService>
     {
         [SerializeField]
-        private  EnemyView enemyPrefab;
+        private  EnemyPropsSO enemyProps;
+        
         private List<EnemyController> enemyList;
 
         private void Start() {
@@ -17,7 +18,7 @@ namespace BomberMan.Enemy
 
         public void SpawnEnemyAt(Vector2 _position)
         {
-            EnemyController enemy = new EnemyController(enemyPrefab, _position);
+            EnemyController enemy = new EnemyController(enemyProps, _position);
             enemyList.Add(enemy);
         }
 

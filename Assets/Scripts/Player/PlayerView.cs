@@ -23,7 +23,7 @@ namespace BomberMan.Player
         {
             Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
             Vector2 currentVelocity = rb.velocity;
-            Vector2 newVelocity = new Vector2(xOffset,yOffset);
+            Vector2 newVelocity = new Vector2(xOffset * speed, yOffset * speed);
             
 
             rb.velocity = newVelocity;
