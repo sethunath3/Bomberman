@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Grid
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bomb
+    uniqueID: 3188049339
+    locked: 0
+  - name: Player
+    uniqueID: 1848282769
+    locked: 0
+  - name: Enemy
+    uniqueID: 443222581
+    locked: 0
+  - name: Explosion
+    uniqueID: 3524290293
     locked: 0
