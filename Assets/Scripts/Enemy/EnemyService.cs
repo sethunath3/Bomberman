@@ -25,6 +25,7 @@ namespace BomberMan.Enemy
 
         public void KillEnemy(EnemyController _enemy)
         {
+            GameplayManager.Instance.EnemyKilled();
             enemyList.Remove(_enemy);
             _enemy.KillEnemy();
             if(enemyList.Count <= 0)
